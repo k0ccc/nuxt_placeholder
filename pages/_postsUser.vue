@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-for="post of posts" :key="post.id">
-      <div :v-if="post.userId === userId">
+      <div v-if="post.userId === userId">
         <h3>{{ post.title}}</h3>
         <p>{{ post.body}}</p>
-        <small>{{ post.id}} {{ post.userId}}</small>
+        <small>{{ post.id}}</small>
       </div>
     </div>
   </div>
@@ -20,9 +20,9 @@
       userId : Number,
     }
   },
-  beforeCreate() {
-    this.userId = this.$route.params.postsUser
-  },
+  mounted(){
+    this.userId = parseInt(this.$route.params.postsUser)
+  }
   // props:{
   //   posts: {
   //     type:Array,
